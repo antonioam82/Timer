@@ -1,6 +1,7 @@
 import datetime
 from datetime import date
 from VALID import OKI, ER, ns
+import time
 import subprocess
 
 def año_valido(a):
@@ -47,7 +48,7 @@ def mn_valido(n):#ESTA FUNCION VALE TANTO PARA LOS MINUTOS COMO PARA LOS SEGUNDO
     return mn
 
 def entering_date0(h1,m1,s1,h2,m2,s2):
-    D_hora=abs(h2-h1);D_minuto=abs(m2-m1);D_segundo=abs(s2-s1)
+    D_hora=h2-h1;D_minuto=m2-m1;D_segundo=s2-s1
     lista=[D_hora,D_minuto,D_segundo]
     return lista
 
@@ -57,17 +58,20 @@ def entering_date(a,m,d,h,mi,s):
 
 
 while True:
+    print("INSTANT DATE")
     print("""El presente programa calcula las horas, minutos y segundos
 entre dos fechas cualesquiera tanto del pasado como del futuro""")
-    print("INSTANT DATE")
-    print("*********PRIMER SUCESO*********")
+    print("")
+    time.sleep(2)
+    print("*********PRIMER SUCESO*********",chr(7))
     año1=año_valido(OKI(input("Introduce año: ")))
     mes1=mes_valido(OKI(input("Introduce mes: ")))
     dia1=dia_valido(año1,mes1,OKI(input("Introduce día: ")))
     hora1=hora_valida()
     minuto1=mn_valido("m")
     segundo1=mn_valido("s")
-    print("*********SEGUNDO SUCESO*********")
+    print("")
+    print("*********SEGUNDO SUCESO*********",chr(7))
     año2=año_valido(OKI(input("Introduce año: ")))
     mes2=mes_valido(OKI(input("Introduce número del mes: ")))
     dia2=dia_valido(año2,mes2,OKI(input("Introduce día: ")))
@@ -78,9 +82,13 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
     if año1==año2 and mes1==mes2 and dia1==dia2:
         hms=entering_date0(hora1,minuto1,segundo1,hora2,minuto2,segundo2)
         Horas_totales=hms[0]
-        Minutos_totales=(hms[0]*60)+(hms[1])
-        Segundos_totales=(Minutos_totales*60)+(hms[2])
-        print("HORAS TOTALES:",Horas_totales,ER(Horas_totales),"MINUTOS TOTALES:",Minutos_totales,ER(Minutos_totales),"SEGUNDOS TOTALES:",Segundos_totales,ER(Segundos_totales))
+        Minutos_totales=(hms[0]*60)+hms[1]
+        Segundos_totales=(Minutos_totales*60)+hms[2]
+        print("")
+        print("HORAS TOTALES:",abs(Horas_totales),ER(Horas_totales))
+        print("MINUTOS TOTALES:",abs(Minutos_totales),ER(Minutos_totales))
+        print("SEGUNDOS TOTALES:",abs(Segundos_totales),ER(Segundos_totales))
+        print("")
     else:
         D1=entering_date(año1,mes1,dia1,hora1,minuto1,segundo1)
         D2=entering_date(año2,mes2,dia2,hora2,minuto2,segundo2)
@@ -93,16 +101,19 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
     
         numero_horas=int(tiempo[0])
         numero_minutos=int(tiempo[1])
-        print(numero_minutos)
+        #print(numero_minutos)
         numero_segundos=int(tiempo[2])
 
         Total_horas=(int(numero_dias)*24)+numero_horas
         Total_minutos=((Total_horas*60)+numero_minutos)+minuto2
         Total_segundos=((Total_minutos*60)+numero_segundos)+segundo2
-        print("HORAS TOTALES:",Total_horas,ER(Total_horas),"MINUTOS TOTALES:",Total_minutos,ER(Total_minutos),"SEGUNDOS TOTALES:",Total_segundos,ER(Total_segundos))
+        print("")
+        print("HORAS TOTALES:",Total_horas,ER(Total_horas))
+        print("MINUTOS TOTALES:",Total_minutos,ER(Total_minutos))
+        print("SEGUNDOS TOTALES:",Total_segundos,ER(Total_segundos))
+        print("")
     preg=ns(input("¿Desea efectuar más calculos?: "))
     if preg==("n"):
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
-
