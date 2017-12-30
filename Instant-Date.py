@@ -78,12 +78,14 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
     hora2=hora_valida()
     minuto2=mn_valido("m")
     segundo2=mn_valido("s")
+
     
     if año1==año2 and mes1==mes2 and dia1==dia2:
         hms=entering_date0(hora1,minuto1,segundo1,hora2,minuto2,segundo2)
-        Horas_totales=hms[0]
-        Minutos_totales=(hms[0]*60)+hms[1]
-        Segundos_totales=(Minutos_totales*60)+hms[2]
+        #Horas_totales=hms[0]
+        Minutos_totales=((hms[0]*60)-minuto1)+minuto2
+        Segundos_totales=((Minutos_totales*60)-segundo1)+segundo2
+        Horas_totales=Minutos_totales/60
         print("")
         print("HORAS TOTALES:",abs(Horas_totales),ER(Horas_totales))
         print("MINUTOS TOTALES:",abs(Minutos_totales),ER(Minutos_totales))
@@ -93,24 +95,23 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
         D1=entering_date(año1,mes1,dia1,hora1,minuto1,segundo1)
         D2=entering_date(año2,mes2,dia2,hora2,minuto2,segundo2)
 
-        difer=(str(abs(D2-D1))).split(",")
+        difer=(str(D2-D1)).split(",")
         numero_dias=((difer[0].split(" "))[0])
 
         tiempo=difer[1].split(":")
-        #print(difer)
     
         numero_horas=int(tiempo[0])
         numero_minutos=int(tiempo[1])
-        #print(numero_minutos)
         numero_segundos=int(tiempo[2])
 
-        Total_horas=(int(numero_dias)*24)+numero_horas
-        Total_minutos=((Total_horas*60)+numero_minutos)+minuto2
-        Total_segundos=((Total_minutos*60)+numero_segundos)+segundo2
+        Total_horasProv=(int(numero_dias)*24)+numero_horas
+        Total_minutos=((Total_horasProv*60)-minuto1)+minuto2
+        Total_segundos=(Total_minutos*60)+numero_segundos
+        Total_horas=Total_minutos/60
         print("")
-        print("HORAS TOTALES:",Total_horas,ER(Total_horas))
-        print("MINUTOS TOTALES:",Total_minutos,ER(Total_minutos))
-        print("SEGUNDOS TOTALES:",Total_segundos,ER(Total_segundos))
+        print("HORAS TOTALES:",abs(Total_horas),ER(Total_horas))
+        print("MINUTOS TOTALES:",abs(Total_minutos),ER(Total_minutos))
+        print("SEGUNDOS TOTALES:",abs(Total_segundos),ER(Total_segundos))
         print("")
     preg=ns(input("¿Desea efectuar más calculos?: "))
     if preg==("n"):
