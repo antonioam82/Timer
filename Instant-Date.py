@@ -62,7 +62,7 @@ while True:
     print("""El presente programa calcula las horas, minutos y segundos
 entre dos fechas cualesquiera tanto del pasado como del futuro""")
     print("")
-    time.sleep(2)
+    time.sleep(1)
     print("*********PRIMER SUCESO*********",chr(7))
     año1=año_valido(OKI(input("Introduce año: ")))
     mes1=mes_valido(OKI(input("Introduce mes: ")))
@@ -70,6 +70,7 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
     hora1=hora_valida()
     minuto1=mn_valido("m")
     segundo1=mn_valido("s")
+    D1=entering_date(año1,mes1,dia1,hora1,minuto1,segundo1)#
     print("")
     print("*********SEGUNDO SUCESO*********",chr(7))
     año2=año_valido(OKI(input("Introduce año: ")))
@@ -78,7 +79,8 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
     hora2=hora_valida()
     minuto2=mn_valido("m")
     segundo2=mn_valido("s")
-
+    D2=entering_date(año2,mes2,dia2,hora2,minuto2,segundo2)#
+    difer=(str(abs(D2-D1))).split(",")
     
     if año1==año2 and mes1==mes2 and dia1==dia2:
         hms=entering_date0(hora1,minuto1,segundo1,hora2,minuto2,segundo2)
@@ -92,21 +94,26 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
         print("SEGUNDOS TOTALES:",abs(Segundos_totales),ER(Segundos_totales))
         print("")
     else:
-        D1=entering_date(año1,mes1,dia1,hora1,minuto1,segundo1)
-        D2=entering_date(año2,mes2,dia2,hora2,minuto2,segundo2)
-
-        difer=(str(D2-D1)).split(",")
-        numero_dias=((difer[0].split(" "))[0])
-
-        tiempo=difer[1].split(":")
+        if len(difer)>1:
+            #D1=entering_date(año1,mes1,dia1,hora1,minuto1,segundo1)
+            #D2=entering_date(año2,mes2,dia2,hora2,minuto2,segundo2)##
     
-        numero_horas=int(tiempo[0])
+
+            #difer=(str(D2-D1)).split(",")
+            numero_dias=((difer[0].split(" "))[0])
+            tiempo=difer[1].split(":")
+        else:
+            numero_dias=0
+            difer=(":").join(difer)
+            tiempo=difer.split(":")
+
+            
         numero_minutos=int(tiempo[1])
         numero_segundos=int(tiempo[2])
 
-        Total_horasProv=(int(numero_dias)*24)+numero_horas
+        Total_horasProv=((int(numero_dias)*24)+numero_horas)
         Total_minutos=((Total_horasProv*60)-minuto1)+minuto2
-        Total_segundos=(Total_minutos*60)+numero_segundos
+        Total_segundos=((Total_minutos*60)-segundo1)+segundo2
         Total_horas=Total_minutos/60
         print("")
         print("HORAS TOTALES:",abs(Total_horas),ER(Total_horas))
