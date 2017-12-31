@@ -74,7 +74,7 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
     print("")
     print("*********SEGUNDO SUCESO*********",chr(7))
     año2=año_valido(OKI(input("Introduce año: ")))
-    mes2=mes_valido(OKI(input("Introduce número del mes: ")))
+    mes2=mes_valido(OKI(input("Introduce mes: ")))
     dia2=dia_valido(año2,mes2,OKI(input("Introduce día: ")))
     hora2=hora_valida()
     minuto2=mn_valido("m")
@@ -107,7 +107,7 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
             difer=(":").join(difer)
             tiempo=difer.split(":")
 
-            
+        numero_horas=int(tiempo[0])    
         numero_minutos=int(tiempo[1])
         numero_segundos=int(tiempo[2])
 
@@ -125,3 +125,4 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
+
