@@ -81,7 +81,11 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
     segundo2=mn_valido("s")
     D2=entering_date(año2,mes2,dia2,hora2,minuto2,segundo2)#
     difer=(str(abs(D2-D1))).split(",")
-    if año2<año1:
+    if (año2<año1 or año1==año2 and
+    (dia1>dia2 or dia1==dia2 and
+    (hora1>hora2 or hora1==hora2 and
+    (minuto1>minuto2 or minuto1==minuto2 and
+    (segundo1>segundo2))))):
         a=minuto1;b=minuto2
         minuto1=b;minuto2=a
         c=hora1;d=hora2
@@ -94,6 +98,7 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
         mes1=j;mes2=i
         k=dia1;l=dia2
         dia1=l;dia2=k
+        
         
         
     
@@ -140,5 +145,4 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
-
 
