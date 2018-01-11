@@ -35,8 +35,8 @@ def hora_valida():
             break
     return h
 
-def mn_valido(n):#ESTA FUNCION VALE TANTO PARA LOS MINUTOS COMO PARA LOS SEGUNDOS
-    while True:#REVISAR
+def mn_valido(n):#FUNCION VALIDA PARA MINUTOS Y SEGUNDOS
+    while True:
         if n==("m"):
             mn=OKI(input("Introduce minuto: "))
         else:
@@ -103,11 +103,10 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
         
     
     if año1==año2 and mes1==mes2 and dia1==dia2:
-        hms=entering_date0(hora1,minuto1,segundo1,hora2,minuto2,segundo2)
-        #Horas_totales=hms[0]
-        Minutos_totales=((hms[0]*60)-minuto1)+minuto2
+        difer_horas=abs(hora2-hora1)
+        Minutos_totales=((difer_horas*60)-minuto1)+minuto2
         Segundos_totales=((Minutos_totales*60)-segundo1)+segundo2
-        Horas_totales=Minutos_totales/60
+        Horas_totales=Segundos_totales/3600
         print("")
         print("HORAS TOTALES:",abs(Horas_totales),ER(Horas_totales))
         print("MINUTOS TOTALES:",abs(Minutos_totales),ER(Minutos_totales))
@@ -115,11 +114,6 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
         print("")
     else:
         if len(difer)>1:
-            #D1=entering_date(año1,mes1,dia1,hora1,minuto1,segundo1)
-            #D2=entering_date(año2,mes2,dia2,hora2,minuto2,segundo2)##
-    
-
-            #difer=(str(D2-D1)).split(",")
             numero_dias=((difer[0].split(" "))[0])
             tiempo=difer[1].split(":")
         else:
@@ -127,7 +121,7 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
             difer=(":").join(difer)
             tiempo=difer.split(":")
 
-        numero_horas=int(tiempo[0])    
+        numero_horas=int(tiempo[0]) #parece que no utilizo ni el "numero_minutos" ni "numero_segundos".   
         numero_minutos=int(tiempo[1])
         numero_segundos=int(tiempo[2])
 
@@ -145,4 +139,3 @@ entre dos fechas cualesquiera tanto del pasado como del futuro""")
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
-
