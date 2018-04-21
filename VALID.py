@@ -114,9 +114,25 @@ def opt(o,l):
         o=input("Introduzca una opción válida: ")
     return o
 
-#EJEMPLO:
-#op=opt(input("opcion: "),["s","f","l"])
-#print(op)
-        
+def OKI_R(n):
+    if n!="R":
+        try:
+            n=int(n)
+        except:
+            n=OKI_R(input("Caracter no válido: "))
+    return n
+
+def OK_R(n):
+    if n!="R":
+        try:
+            n=float(n)
+        except:
+            n=OK_R(input("Cracter no válido: "))
+    return n
+
+def ns_R(n):
+    while n!=("R") and n!=("n") and n!=("s"):
+        n=input("Ecriba solo \'n\',\'s\'o\'R\': ")
+    return n
 
 
