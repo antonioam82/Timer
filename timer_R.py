@@ -1,3 +1,4 @@
+#ESTE PROGRAMA NO ESTA TERMINADO (NO APTO PARA EJECUCIÓN).
 from VALID import OKI, ns, ER, ns_R, OKI_R
 import time
 from datetime import date
