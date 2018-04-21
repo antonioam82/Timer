@@ -60,7 +60,6 @@ def semana(n):
         if N==n:
             return(i)
             break
-
 while True:
     while True:
         print("CALCULANDO LOS DIAS")
@@ -118,7 +117,7 @@ while True:
                 tiempo_detall=(hms(timer))
                 print(tiempo_detall[0],ER(tiempo_detall[0]),"horas",tiempo_detall[1],ER(tiempo_detall[1]),"minutos y",tiempo_detall[2],ER(tiempo_detall[2]),"segundos")
             break
-    if op==("B"):####################################################################################################################################################
+    if op==("B"):#######################################################################################################################################################
         a=input("Año del primer suceso: ");a=nums(OKI(a))
         m=input("Mes del primer suceso: ");m=mes(OKI(m))
         d=input("Día del primer suceso: ");d=OKI(d)
