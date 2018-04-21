@@ -1,4 +1,3 @@
-#PROGRAMA NO TERMINADO (NO APTO PARA EJECUCIÓN).
 from VALID import OKI, ns, ER, ns_R, OKI_R
 import time
 from datetime import date
@@ -92,10 +91,14 @@ while True:
             m=input("Mes del suceso: ");m=mes(OKI_R(m))
             if m==("R"):
                 subprocess.call(["cmd.exe","/C","cls"])
-                continue########################################################################################################################################
+                continue
             d=input("Dia del suceso: ");d=OKI_R(d)
-            Di=mess(a,m,d)
-            D1=date(a,m,Di)
+            if d==("R"):
+                subprocess.call(["cmd.exe","/C","cls"])
+                continue
+        break###################################################################################################################################################
+        Di=mess(a,m,d)
+        D1=date(a,m,Di)
         if D1==(today):
             print("Hoy es",D1)#HAY QUE VER QUE SE HACE EN ESTE CASO.
         timer=abs(D1-today).days
@@ -190,4 +193,5 @@ while True:
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
+    
     
