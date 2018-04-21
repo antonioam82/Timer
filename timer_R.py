@@ -12,10 +12,12 @@ def hms(timer):
     
 
 def pregunta(timer): #ESTA FUNCION PREGUNTA SI SE QUIERE INCLUIR AMBAS FECHAS EN EL COMPUTO (VALE PARA "A","B" Y "C").
-    AD=ns(input("¿Incluir ambos dias en el computo?: "))
-    if AD==("s"):
-        timer=timer+1
-    return(timer)   
+    AD=ns_R(input("¿Incluir ambos dias en el computo?: "))
+    if AD!=("R"):
+        if AD==("s"):
+            timer=timer+1
+        return(timer)
+    return AD
         
 
 def nums(a):#SE HA INCLUIDO EL "RESSET"
@@ -96,27 +98,30 @@ while True:
             if d==("R"):
                 subprocess.call(["cmd.exe","/C","cls"])
                 continue
-        break###################################################################################################################################################
-        Di=mess(a,m,d)
-        D1=date(a,m,Di)
-        if D1==(today):
-            print("Hoy es",D1)#HAY QUE VER QUE SE HACE EN ESTE CASO.
-        timer=abs(D1-today).days
-        timer=pregunta(timer)
-        if D1>today:
-            print("Quedan",timer,"dias para la fecha escogida")
-        else:
-            print("Han transcurrido",timer,"dias desde la fecha escogida")
-        print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
-        if cal==("s"):
-            import calendar
-            print("")
-            CAL=calendar.c.prmonth(a,m)
-            print("")
-        if segg==("s"):
-            tiempo_detall=(hms(timer))
-            print(tiempo_detall[0],ER(tiempo_detall[0]),"horas",tiempo_detall[1],ER(tiempo_detall[1]),"minutos y",tiempo_detall[2],ER(tiempo_detall[2]),"segundos")
-    if op==("B"):
+            Di=mess(a,m,d)
+            D1=date(a,m,Di)
+            if D1==(today):
+                print("Hoy es",D1)#HAY QUE VER QUE SE HACE EN ESTE CASO.
+            timer=abs(D1-today).days
+            timer=pregunta(timer)
+            if timer==("R"):
+                subprocess.call(["cmd.exe","/C","cls"])
+                continue
+            if D1>today:
+                print("Quedan",timer,"dias para la fecha escogida")
+            else:
+                print("Han transcurrido",timer,"dias desde la fecha escogida")
+            print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
+            if cal==("s"):
+                import calendar
+                print("")
+                CAL=calendar.c.prmonth(a,m)
+                print("")
+            if segg==("s"):
+                tiempo_detall=(hms(timer))
+                print(tiempo_detall[0],ER(tiempo_detall[0]),"horas",tiempo_detall[1],ER(tiempo_detall[1]),"minutos y",tiempo_detall[2],ER(tiempo_detall[2]),"segundos")
+            break
+    if op==("B"):####################################################################################################################################################
         a=input("Año del primer suceso: ");a=nums(OKI(a))
         m=input("Mes del primer suceso: ");m=mes(OKI(m))
         d=input("Día del primer suceso: ");d=OKI(d)
@@ -193,5 +198,4 @@ while True:
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
-    
     
