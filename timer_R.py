@@ -11,7 +11,6 @@ def hms(timer):
     TT=(h,mi,sec)
     return TT
     
-
 def pregunta(timer): #ESTA FUNCION PREGUNTA SI SE QUIERE INCLUIR AMBAS FECHAS EN EL COMPUTO (VALE PARA "A","B" Y "C").
     AD=ns_R(input("¿Incluir ambos dias en el computo?: "))
     if AD!=("R"):
@@ -20,7 +19,6 @@ def pregunta(timer): #ESTA FUNCION PREGUNTA SI SE QUIERE INCLUIR AMBAS FECHAS EN
         return(timer)
     return AD
         
-
 def nums(a):#SE HA INCLUIDO EL "RESSET"
     while a!=("R") and (a<1 or a>9999):
         a=OKI(input("Año no valido: "))
@@ -30,7 +28,6 @@ def mes(m):#HAN DE SER ENTEROS #SE HA INCLUIDO "RESSET"
     while m!=("R") and (m>12 or m<1):
         m=OKI(input("Hay 12 meses,(introduce un valor entre 1 y 12 ambos incluidos): "))
     return(m)
-
 
 def mess(a,m,d):#PARA APLICAR LA FUNCION ESTAS VARIABLES HAN DE SER ENTEROS!!!
     if d!=("R"):
@@ -63,7 +60,6 @@ def semana(n):
         if N==n:
             return(i)
             break
-
 
 while True:
     while True:
