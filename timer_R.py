@@ -1,5 +1,6 @@
-#ESTE PROGRAMA NO ESTA TERMINADO (NO APTO PARA EJECUCIÓN).
-from VALID import OKI, ns, ER, ns_R, OKI_R
+#VERSION DEL PROGRAMA "timer.py" CON OPCIÓN DE RESETEADO EN LA INTRODUCCION DE FECHAS.
+#NO TERMINADO
+from VALID import OKI, ns, ER, OKI_R
 import time
 from datetime import date
 import subprocess
@@ -11,38 +12,38 @@ def hms(timer):
     TT=(h,mi,sec)
     return TT
     
+
 def pregunta(timer): #ESTA FUNCION PREGUNTA SI SE QUIERE INCLUIR AMBAS FECHAS EN EL COMPUTO (VALE PARA "A","B" Y "C").
-    AD=ns_R(input("¿Incluir ambos dias en el computo?: "))
-    if AD!=("R"):
-        if AD==("s"):
-            timer=timer+1
-        return(timer)
-    return AD
+    AD=ns(input("¿Incluir ambos dias en el computo?: "))
+    if AD==("s"):
+        timer=timer+1
+    return(timer)   
         
-def nums(a):#SE HA INCLUIDO EL "RESSET"
-    while a!=("R") and (a<1 or a>9999):
+
+def nums(a):
+    while a!="R" and (a<1 or a>9999):
         a=OKI(input("Año no valido: "))
     return a
 
-def mes(m):#HAN DE SER ENTEROS #SE HA INCLUIDO "RESSET"
-    while m!=("R") and (m>12 or m<1):
-        m=OKI(input("Hay 12 meses,(introduce un valor entre 1 y 12 ambos incluidos): "))
+def mes(m):#HAN DE SER ENTEROS
+    while m!="R" and (m>12 or m<1):
+            m=OKI(input("Hay 12 meses,(introduce un valor entre 1 y 12 ambos incluidos): "))
     return(m)
 
+
 def mess(a,m,d):#PARA APLICAR LA FUNCION ESTAS VARIABLES HAN DE SER ENTEROS!!!
-    if d!=("R"):
-        M1=date(a,m,1)
-        if a<9999 or m<12:
-            if m==12:
-                M2=date(a+1,1,1)
-            else:
-                M2=date(a,m+1,1)
-            MD=abs(M1-M2)
-            while d>MD.days or d<1:
-                d=OKI(input("La cifra del día está fuera del rango para el mes escogido: "))
+    M1=date(a,m,1)
+    if a<9999 or m<12:
+        if m==12:
+            M2=date(a+1,1,1)
         else:
-            while d>31:
-                d=OKI(input("La cifra del día está fuera del rango para el mes escogido: "))
+            M2=date(a,m+1,1)
+        MD=abs(M1-M2)
+        while d>MD.days or d<1:
+            d=OKI(input("La cifra del día está fuera del rango para el mes escogido: "))
+    else:
+        while d>31:
+            d=OKI(input("La cifra del día está fuera del rango para el mes escogido: "))
     return d
 
 def meses(Fm):
@@ -61,28 +62,23 @@ def semana(n):
             return(i)
             break
 
+
 while True:
-    while True:
-        print("CALCULANDO LOS DIAS")
-        print("Escoja una opción:")
-        print("A)Calcular el número de días tomando como referencia la fecha actual")
-        print("B)Calcular el número de días entre dos fechas distintas a la actual")
-        print("C)Conocer fecha a partir del número de días")
-        op=input("Introduzca aquí su opción: ")
-        while op!=("A") and op!=("B") and op!=("C"):
-            op=input("Escriba solo \'A\',\'B\'o\'C\' segun su opción: ")
-        today=date.today()
-        #today=date.fromtimestamp(time.time())#¿REALMENTE ES NECESARIA AQUÍ ESTA PARTE?
-        cal=ns_R(input("¿Desea ver calendarios?: "))
-        if cal==("R"):
-            subprocess.call(["cmd.exe","/C","cls"])
-            continue
-        if op==("A") or op==("B"):
-            segg=ns_R(input("¿Desea ver el tiempo en horas, minutos y segundos?: "))
-            if segg==("R"):
-                subprocess.call(["cmd.exe","/C","cls"])
-                continue
-        if op==("A"):
+    print("CALCULANDO LOS DIAS")
+    print("Escoja una opción:")
+    print("A)Calcular el número de días tomando como referencia la fecha actual")
+    print("B)Calcular el número de días entre dos fechas distintas a la actual")
+    print("C)Conocer fecha a partir del número de días")
+    op=input("Introduzca aquí su opción: ")
+    while op!=("A") and op!=("B") and op!=("C"):
+        op=input("Escriba solo \'A\',\'B\'o\'C\' segun su opción: ")
+    today=date.today()
+    #today=date.fromtimestamp(time.time())#¿REALMENTE ES NECESARIA AQUÍ ESTA PARTE?
+    cal=ns(input("¿Desea ver calendarios?: "))
+    if op==("A") or op==("B"):
+        segg=ns(input("¿Desea ver el tiempo en horas, minutos y segundos?: "))
+    if op==("A"):
+        while True:
             a=input("Año del suceso: ");a=nums(OKI_R(a))
             if a==("R"):
                 subprocess.call(["cmd.exe","/C","cls"])
@@ -95,90 +91,87 @@ while True:
             if d==("R"):
                 subprocess.call(["cmd.exe","/C","cls"])
                 continue
-            Di=mess(a,m,d)
-            D1=date(a,m,Di)
-            if D1==(today):
-                print("Hoy es",D1)#HAY QUE VER QUE SE HACE EN ESTE CASO.
-            timer=abs(D1-today).days
-            timer=pregunta(timer)
-            if timer==("R"):
+            break
+        Di=mess(a,m,d)
+        D1=date(a,m,Di)
+        if D1==(today):
+            print("Hoy es",D1)#HAY QUE VER QUE SE HACE EN ESTE CASO.
+        timer=abs(D1-today).days
+        timer=pregunta(timer)
+        if D1>today:
+            print("Quedan",timer,"dias para la fecha escogida")
+        else:
+            print("Han transcurrido",timer,"dias desde la fecha escogida")
+        print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
+        if cal==("s"):
+            import calendar
+            print("")
+            CAL=calendar.c.prmonth(a,m)
+            print("")
+        if segg==("s"):
+            tiempo_detall=(hms(timer))
+            print(tiempo_detall[0],ER(tiempo_detall[0]),"horas",tiempo_detall[1],ER(tiempo_detall[1]),"minutos y",tiempo_detall[2],ER(tiempo_detall[2]),"segundos")
+    if op==("B"):
+        while True:
+            a=input("Año del primer suceso: ");a=nums(OKI_R(a))
+            if a=="R":
                 subprocess.call(["cmd.exe","/C","cls"])
                 continue
-            if D1>today:
-                print("Quedan",timer,"dias para la fecha escogida")
-            else:
-                print("Han transcurrido",timer,"dias desde la fecha escogida")
-            print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
-            if cal==("s"):
-                import calendar
-                print("")
-                CAL=calendar.c.prmonth(a,m)
-                print("")
-            if segg==("s"):
-                tiempo_detall=(hms(timer))
-                print(tiempo_detall[0],ER(tiempo_detall[0]),"horas",tiempo_detall[1],ER(tiempo_detall[1]),"minutos y",tiempo_detall[2],ER(tiempo_detall[2]),"segundos")
+            m=input("Mes del primer suceso: ");m=mes(OKI_R(m))
+            if m=="R":
+                subprocess.call(["cmd.exe","/C","cls"])
+                continue
+            d=input("Día del primer suceso: ");d=OKI_R(d)
+            if d=="R":
+                subprocess.call(["cmd.exe","/C","cls"])
+                continue
             break
+        Di=mess(a,m,d)#RESUMIR
+        D1=date(a,m,Di)
+        Dist1=abs(D1-today).days
         while True:
-            if op==("B"):
-                a=input("Año del primer suceso: ");a=nums(OKI_R(a))
-                if a==("R"):
-                    subprocess.call(["cmd.exe","/C","cls"])
-                    continue
-                m=input("Mes del primer suceso: ");m=mes(OKI_R(m))
-                if m==("R"):
-                    subprocess.call(["cmd.exe","/C","cls"])
-                    continue
-                d=input("Día del primer suceso: ");d=OKI_R(d)
-                if d==("R"):
-                    subprocess.call(["cmd.exe","/C","cls"])
-                    continue
-                Di=mess(a,m,d)#RESUMIR
-                D1=date(a,m,Di)
-                Dist1=abs(D1-today).days
-                a2=input("Año del segundo suceso: ");a2=nums(OKI_R(a2))
-                if a2==("R"):
-                    subprocess.call(["cmd.exe","/C","cls"])
-                    continue
-                m2=input("Mes del segundo suceso: ");m2=mes(OKI_R(m2))
-                if m2==("R"):
-                    subprocess.call(["cmd.exe","/C","cls"])
-                    continue
-                d2=input("Día del segundo suceso: ");d2=OKI_R(d2)
-                if d2==("R"):
-                    subprocess.call(["cmd.exe","/C","cls"])
-                    continue
-                Dii=mess(a2,m2,d2)#RESUMIR
-                D2=date(a2,m2,Dii)
-                Dist2=abs(D2-today).days
-                if (D1<=today and D2<=today) or (D1>=today and D2>=today):
-                    timer=abs(Dist1-Dist2)
-                    timer=pregunta(timer)
-                    if timer==("R"):
-                        subprocess.call(["cmd.exe","/C","cls"])
-                        continue
-                    if D1<=today and D2<=today:
-                        print("Transcurrieron",timer,"dias entre las dos fechas indicadas")
-                    else:
-                        print("Transcurriran",timer,"dias entre las dos fechas indicadas")
-                    print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
-                else:
-                    timer=(Dist1+Dist2)
-                    timer=pregunta(timer)
-                    print("Transcurrirán",timer,"dias entre las dos fechas indicadas")
-                    print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
+            a2=input("Año del segundo suceso: ");a2=nums(OKI_R(a2))
+            if a2=="R":
+                subprocess.call(["cmd.exe","/C","cls"])
+                continue
+            m2=input("Mes del segundo suceso: ");m2=mes(OKI_R(m2))
+            if m2=="R":
+                subprocess.call(["cmd.exe","/C","cls"])
+                continue
+            d2=input("Día del segundo suceso: ");d2=OKI_R(d2)
+            if d2=="R":
+                subprocess.call(["cmd.exe","/C","cls"])
+                continue
+            break
+        Dii=mess(a2,m2,d2)#RESUMIR
+        D2=date(a2,m2,Dii)
+        Dist2=abs(D2-today).days
+        if (D1<=today and D2<=today) or (D1>=today and D2>=today):
+            timer=abs(Dist1-Dist2)
+            timer=pregunta(timer)
+            if D1<=today and D2<=today:
+                print("Transcurrieron",timer,"dias entre las dos fechas indicadas")
+            else:
+                print("Transcurriran",timer,"dias entre las dos fechas indicadas")
+            print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
+        else:
+            timer=(Dist1+Dist2)
+            timer=pregunta(timer)
+            print("Transcurrirán",timer,"dias entre las dos fechas indicadas")
+            print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
             
-                if cal==("s"):
-                    import calendar
-                    print("")
-                    CAL=calendar.c.prmonth(a,m)
-                    CAL2=calendar.c.prmonth(a2,m2)
-                    print("")
+        if cal==("s"):
+            import calendar
+            print("")
+            CAL=calendar.c.prmonth(a,m)
+            CAL2=calendar.c.prmonth(a2,m2)
+            print("")
             
-                if segg==("s"):
-                    tiempo_detall=(hms(timer))
-                    print(tiempo_detall[0],ER(tiempo_detall[0]),"horas",tiempo_detall[1],ER(tiempo_detall[1]),"minutos y",tiempo_detall[2],ER(tiempo_detall[2]),"segundos")
-                break
-    if op==("C"):##########################################################################################################################################################################
+        if segg==("s"):
+            tiempo_detall=(hms(timer))
+            print(tiempo_detall[0],ER(tiempo_detall[0]),"horas",tiempo_detall[1],ER(tiempo_detall[1]),"minutos y",tiempo_detall[2],ER(tiempo_detall[2]),"segundos")
+        
+    if op==("C"):
         num=OKI(input("Escriba el número de días: "))
         pas_fut=input("¿Al pasado (\'p\') o al futuro (\'f\'): ")
         while pas_fut!=("p") and pas_fut!=("f"):
