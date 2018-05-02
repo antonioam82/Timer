@@ -71,7 +71,6 @@ while True:
     while op!=("A") and op!=("B") and op!=("C"):
         op=input("Escriba solo \'A\',\'B\'o\'C\' segun su opción: ")
     today=date.today()
-    #today=date.fromtimestamp(time.time())#¿REALMENTE ES NECESARIA AQUÍ ESTA PARTE?
     cal=ns(input("¿Desea ver calendarios?: "))
     if op==("A") or op==("B"):
         segg=ns(input("¿Desea ver el tiempo en horas, minutos y segundos?: "))
