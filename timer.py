@@ -62,11 +62,11 @@ def semana(n):
 
 
 while True:
-    print("CALCULANDO LOS DIAS")
+    print("CALCULANDO DISTANCIA ENTRE FECHAS")
     print("Escoja una opción:")
-    print("A)Calcular el número de días tomando como referencia la fecha actual")
-    print("B)Calcular el número de días entre dos fechas distintas a la actual")
-    print("C)Conocer fecha a partir del número de días")
+    print("A)Calcular el número de días tomando como referencia la fecha actual.")
+    print("B)Calcular el número de días entre dos fechas distintas a la actual.")
+    print("C)Conocer fecha a partir del número de días.")
     op=input("Introduzca aquí su opción: ")
     while op!=("A") and op!=("B") and op!=("C"):
         op=input("Escriba solo \'A\',\'B\'o\'C\' segun su opción: ")
@@ -85,9 +85,9 @@ while True:
         timer=abs(D1-today).days
         timer=pregunta(timer)
         if D1>today:
-            print("Quedan",timer,"dias para la fecha escogida")
+            print("Quedan",timer,"dias para la fecha escogida.")
         else:
-            print("Han transcurrido",timer,"dias desde la fecha escogida")
+            print("Han transcurrido",timer,"dias desde la fecha escogida.")
         print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
         if cal==("s"):
             import calendar
@@ -114,15 +114,15 @@ while True:
             timer=abs(Dist1-Dist2)
             timer=pregunta(timer)
             if D1<=today and D2<=today:
-                print("Transcurrieron",timer,"dias entre las dos fechas indicadas")
+                print("Transcurrieron",timer,"dias entre las dos fechas indicadas.")
             else:
-                print("Transcurriran",timer,"dias entre las dos fechas indicadas")
+                print("Transcurriran",timer,"dias entre las dos fechas indicadas.")
             print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
         else:
             timer=(Dist1+Dist2)
             timer=pregunta(timer)
-            print("Transcurrirán",timer,"dias entre las dos fechas indicadas")
-            print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
+            print("Transcurrirán",timer,"dias entre las dos fechas indicadas.")
+            print("("+str(int(timer/7)),"semanas y",timer%7,"dias.)")
             
         if cal==("s"):
             import calendar
