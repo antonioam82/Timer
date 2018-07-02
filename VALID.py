@@ -127,7 +127,7 @@ def OK_R(n):
         try:
             n=float(n)
         except:
-            n=OK_R(input("Cracter no válido: "))
+            n=OK_R(input("Caracter no válido: "))
     return n
 
 def ns_R(n):
