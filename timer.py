@@ -1,6 +1,7 @@
 import time
 from datetime import date
 import subprocess
+from VALID import ER
 
 def ns(c):
     while c!=("s") and c!=("n"):
@@ -87,7 +88,7 @@ while True:
     print("C)Conocer fecha a partir del número de días.")
     op=input("Introduzca aquí su opción: ")
     while op!=("A") and op!=("B") and op!=("C"):
-        op=input("Escriba solo \'A\',\'B\'o\'C\' segun su opción: ")
+        op=input("Escriba solo \'A\',\'B\' o \'C\' segun su opción: ")
     today=date.today()
     cal=ns(input("¿Desea ver calendarios?: "))
     if op==("A") or op==("B"):
@@ -206,5 +207,4 @@ while True:
         subprocess.call(["cmd.exe","/C","cls"])
     except:
         continue
-
 
