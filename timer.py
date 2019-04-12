@@ -1,7 +1,19 @@
-from VALID import OKI, ns, ER
 import time
 from datetime import date
 import subprocess
+
+def ns(c):
+    while c!=("s") and c!=("n"):
+        print(chr(7));c=input("Escribe solo \'n\' o \'s\' según su opción: ")
+    return(c)
+
+def OKI(n):
+    try:
+        n=int(n)
+    except:
+        n=OKI(input("Caracter no valido: "))
+    return n
+
 
 def hms(timer):
     h=(timer*24)
@@ -62,7 +74,14 @@ def semana(n):
 
 
 while True:
-    print("CALCULANDO LOS DIAS")
+    print("") 
+    print(" _________________________________________")
+    print("/_    ____________________________________/")
+    print("  /  / __   _________   ______   _______")
+    print(" /  / |  | |  _   _  | | =====| |  ----_|")
+    print("/__/  |__| |_| |_| |_| |______| |_|  \_\ ")
+    print("*********************************************")
+    print("")
     print("Escoja una opción:")
     print("A)Calcular el número de días tomando como referencia la fecha actual.")
     print("B)Calcular el número de días entre dos fechas distintas a la actual.")
@@ -140,7 +159,7 @@ while True:
             
         if segg==("s"):
             tiempo_detall=(hms(timer))
-            print(tiempo_detall[0],ER(tiempo_detall[0]),"horas",tiempo_detall[1],ER(tiempo_detall[1]),"minutos y",tiempo_detall[2],ER(tiempo_detall[2]),"segundos")
+            print(tiempo_detall[0],"horas",tiempo_detall[1],"minutos y",tiempo_detall[2],"segundos")
         
     if op==("C"):
         num=OKI(input("Escriba el número de días: "))
