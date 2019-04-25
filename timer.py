@@ -104,11 +104,9 @@ while True:
         timer=abs(D1-today).days
         timer=pregunta(timer)
         if D1>today:
-            print("")
-            print("Quedan",timer,"dias para la fecha escogida.")
+            print("\nQuedan",timer,"dias para la fecha escogida.")
         else:
-            print("")
-            print("Han transcurrido",timer,"dias desde la fecha escogida.")
+            print("\nHan transcurrido",timer,"dias desde la fecha escogida.")
         print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
         if cal==("s"):
             import calendar
@@ -135,20 +133,16 @@ while True:
             timer=abs(Dist1-Dist2)
             timer=pregunta(timer)
             if D1<=today and D2<=today:
-                print("")
-                print("Transcurrieron",timer,"dias entre las dos fechas indicadas.")
+                #print("")
+                print("\nTranscurrieron",timer,"dias entre las dos fechas indicadas.")
             else:
-                print("")
-                print("Transcurriran",timer,"dias entre las dos fechas indicadas.")
-            print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
-            print("")
+                print("\nTranscurriran",timer,"dias entre las dos fechas indicadas.")
+            print("("+str(int(timer/7)),"semanas y",timer%7,"dias)\n")
         else:
             timer=(Dist1+Dist2)
             timer=pregunta(timer)
-            print("")
-            print("Transcurrirán",timer,"dias entre las dos fechas indicadas.")
-            print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
-            print("")
+            print("\nTranscurrirán",timer,"dias entre las dos fechas indicadas.")
+            print("("+str(int(timer/7)),"semanas y",timer%7,"dias)\n")
             
         if cal==("s"):
             import calendar
@@ -178,9 +172,7 @@ while True:
             mes_nom=meses(date_spl)
             week_day=(dateo).weekday()
             dia_semana=semana(week_day)
-            print("")
-            print("Hace",num,"días era",dia_semana,date_spl[2],"de",mes_nom,"de",date_spl[0])
-            print("")
+            print("\nHace",num,"días era",dia_semana,date_spl[2],"de",mes_nom,"de",date_spl[0])
         if pas_fut==("f"):
             while num>fut_hoy:
                 print("La cantidad introducida es superior al numero de dias restantes, el tope es de",fut_hoy,"dias")
@@ -191,20 +183,16 @@ while True:
             mes_nom=meses(date_spl)
             week_day=(dateo).weekday()
             dia_semana=semana(week_day)
-            print("")
-            print("Dentro de",num,"días será",dia_semana,date_spl[2],"de",mes_nom,"de",date_spl[0])
-            print("")
+            print("\nDentro de",num,"días será",dia_semana,date_spl[2],"de",mes_nom,"de",date_spl[0])
         if cal==("s"):
             import calendar
             print("")
             CAL=calendar.c.prmonth(int(date_spl[0]),int(date_spl[1]))
             print("")
-    print("")
-    c=ns(input("¿Desea continuar?: "))
+    c=ns(input("\n¿Desea continuar?: "))
     if c==("n"):
         break
     try:
         subprocess.call(["cmd.exe","/C","cls"])
     except:
         continue
-
