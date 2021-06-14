@@ -2,7 +2,6 @@ import time
 from datetime import date
 import subprocess
 from colorama import init, Back, Fore, Style
-from VALID import ER
 
 init()
 
