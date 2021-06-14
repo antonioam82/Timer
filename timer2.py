@@ -1,7 +1,7 @@
 import time
 from datetime import date
 import subprocess
-from colorama import init, Back
+from colorama import init, Back, Fore, Style
 from VALID import ER
 
 init()
@@ -70,17 +70,18 @@ def semana(n):
 
 
 while True:
-    print(Back.BLUE+"           _________________________________________                ")
-    print(Back.BLUE+"         /__    ____________________________________/               ")
-    print(Back.BLUE+"           /  / __   _________   ______   _______                   ")
-    print(Back.BLUE+"          /  / |  | |  _   _  | | =====| |  ----_|                  ")
-    print(Back.BLUE+"         /__/  |__| |_| |_| |_| |______| |_|  \_\                   ")
-    print(Back.BLUE+"********************************************************************")
+    print(Back.BLUE+"           _________________________________________               ")
+    print(Back.BLUE+"         /__    ___________________________________/               ")
+    print(Back.BLUE+"           /  / __   _________   ______   ________                 ")
+    print(Back.BLUE+"          /  / |  | |  _   _  | | =====| |  ----_/                 ")
+    print(Back.BLUE+"         /__/  |__| |_| |_| |_| |______| |_|  \_\                  ")
+    print(Back.BLUE+"*******************************************************************")
     print(Back.RESET+"")
-    print("Escoja una opción:")
+    print(Fore.GREEN+"-------------------------ESCOJA UNA OPCIÓN-------------------------")
     print("A)Calcular número de días tomando como referencia la fecha actual.")
     print("B)Calcular número de días entre dos fechas distintas a la actual.")
     print("C)Conocer fecha a partir del número de días.")
+    print("-------------------------------------------------------------------"+Fore.RESET)
     op=input("Introduzca aquí su opción: ")
     
     while op!=("A") and op!=("B") and op!=("C"):
@@ -88,34 +89,33 @@ while True:
     today=date.today()
     cal=ns(input("¿Desea ver calendarios?: "))
     if op==("A"):
-        a=nums(OKI(input("Año del suceso: ")))#;a=nums(OKI(a))
+        a=nums(OKI(input("\nAño del suceso: ")))#;a=nums(OKI(a))
         m=mes(OKI(input("Mes del suceso: ")))#;m=mes(OKI(m))
         d=OKI(input("Dia del suceso: "));#d=OKI(d)
         Di=mess(a,m,d)
         D1=date(a,m,Di)
         if D1==(today):
-            print("Hoy es",D1)
+            print(Fore.YELLOW+"Hoy es",D1)
         timer=abs(D1-today).days
         timer=pregunta(timer)
         if D1>today:
-            print("\nQuedan",timer,"dias para la fecha escogida.")
+            print(Fore.YELLOW+"\nQuedan",timer,"dias para la fecha escogida.")
         else:
-            print("\nHan transcurrido",timer,"dias desde la fecha escogida.")
+            print(Fore.YELLOW+"\nHan transcurrido",timer,"dias desde la fecha escogida.")
         print("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
         if cal==("s"):
             import calendar
-            print("")
+            print(Fore.GREEN+"")
             CAL=calendar.c.prmonth(a,m)
-            print("")
             
     if op==("B"):
-        a=nums(OKI(input("Año del primer suceso: ")))#;a=nums(OKI(a))
+        a=nums(OKI(input("\nAño del primer suceso: ")))#;a=nums(OKI(a))
         m=mes(OKI(input("Mes del primer suceso: ")))#;m=mes(OKI(m))
         d=OKI(input("Día del primer suceso: "))#;d=OKI(d)
         Di=mess(a,m,d)
         D1=date(a,m,Di)
         Dist1=abs(D1-today).days
-        a2=nums(OKI(input("Año del segundo suceso: ")))#;a2=nums(OKI(a2))
+        a2=nums(OKI(input("\nAño del segundo suceso: ")))#;a2=nums(OKI(a2))
         m2=mes(OKI(input("Mes del segundo suceso: ")))#;m2=mes(OKI(m2))
         d2=OKI(input("Día del segundo suceso: "))#;d2=OKI(d2)
         Dii=mess(a2,m2,d2)
@@ -126,22 +126,21 @@ while True:
             timer=pregunta(timer)
             if D1<=today and D2<=today:
                 #print("")
-                print("\nTranscurrieron",timer,"dias entre las dos fechas indicadas.")
+                print(Fore.YELLOW+"\nTranscurrieron",timer,"dias entre las dos fechas indicadas.")
             else:
-                print("\nTranscurriran",timer,"dias entre las dos fechas indicadas.")
+                print(Fore.YELLOW+"\nTranscurriran",timer,"dias entre las dos fechas indicadas.")
             print("("+str(int(timer/7)),"semanas y",timer%7,"dias)\n")
         else:
             timer=(Dist1+Dist2)
             timer=pregunta(timer)
-            print("\nTranscurrirán",timer,"dias entre las dos fechas indicadas.")
+            print(Fore.YELLOW+"\nTranscurrirán",timer,"dias entre las dos fechas indicadas.")
             print("("+str(int(timer/7)),"semanas y",timer%7,"dias)\n")
             
         if cal==("s"):
             import calendar
-            print("")
+            print(Fore.GREEN+"")
             CAL=calendar.c.prmonth(a,m)
             CAL2=calendar.c.prmonth(a2,m2)
-            print("")
         
     if op==("C"):
         num=OKI(input("Escriba el número de días: "))
@@ -152,7 +151,7 @@ while True:
         Dia_ult=date(9999,12,31);fut_hoy=int((Dia_ult-today).days)#SE ESTABLECE LO QUE FALTA PARA EL ULTIMO DIA
         if pas_fut==("p"):
             while num>HOY:
-                print("La cantidad introducida es superior al numero de dias transcurridos, el tope es de",HOY-1,"dias")
+                print(Fore.YELLOW+"La cantidad introducida es superior al numero de dias transcurridos, el tope es de",HOY-1,"dias")
                 num=OKI(input("Prueba con otro número: "))
             dist=HOY-num
             dateo=date.fromordinal(dist)#RESUMIR
@@ -160,10 +159,10 @@ while True:
             mes_nom=meses(date_spl)
             week_day=(dateo).weekday()
             dia_semana=semana(week_day)
-            print("\nHace",num,"días era",dia_semana,date_spl[2],"de",mes_nom,"de",date_spl[0])
+            print(Fore.YELLOW+"\nHace",num,"días era",dia_semana,date_spl[2],"de",mes_nom,"de",date_spl[0])
         if pas_fut==("f"):
             while num>fut_hoy:
-                print("La cantidad introducida es superior al numero de dias restantes, el tope es de",fut_hoy,"dias")
+                print(Fore.YELLOW+"La cantidad introducida es superior al numero de dias restantes, el tope es de",fut_hoy,"dias")
                 num=OKI(input("Prueba con otro número: "))
             dist=HOY+num
             dateo=date.fromordinal(dist)#RESUMIR
@@ -171,12 +170,13 @@ while True:
             mes_nom=meses(date_spl)
             week_day=(dateo).weekday()
             dia_semana=semana(week_day)
-            print("\nDentro de",num,"días será",dia_semana,date_spl[2],"de",mes_nom,"de",date_spl[0])
+            print(Fore.YELLOW+"\nDentro de",num,"días será",dia_semana,date_spl[2],"de",mes_nom,"de",date_spl[0])
         if cal==("s"):
             import calendar
-            print("")
+            print(Fore.GREEN+"")
             CAL=calendar.c.prmonth(int(date_spl[0]),int(date_spl[1]))
-            print("")
+
+    print(Fore.RESET+"")
     c=ns(input("\n¿Desea continuar?(n/s): "))
     if c==("n"):
         break
