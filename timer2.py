@@ -20,7 +20,7 @@ def OKI(n):
     
 
 def pregunta(timer): #ESTA FUNCION PREGUNTA SI SE QUIERE INCLUIR AMBAS FECHAS EN EL COMPUTO (VALE PARA "A","B" Y "C").
-    AD=ns(input("¿Incluir ambos dias en el computo?: "))
+    AD=ns(input("¿Incluir ambos dias en el computo?: ").lower())
     if AD==("s"):
         timer=timer+1
     return(timer)   
@@ -82,12 +82,12 @@ while True:
     print("B)Calcular número de días entre dos fechas distintas a la actual.")
     print("C)Conocer fecha a partir del número de días.")
     print("-------------------------------------------------------------------"+Fore.RESET)
-    op=input("Introduzca aquí su opción: ")
+    op=input("Introduzca aquí su opción: ").upper()
     
     while op!=("A") and op!=("B") and op!=("C"):
         op=input("Escriba solo \'A\',\'B\' o \'C\' segun su opción: ")
     today=date.today()
-    cal=ns(input("¿Desea ver calendarios?: "))
+    cal=ns(input("¿Desea ver calendarios?: ").lower())
     if op==("A"):
         a=nums(OKI(input("\nAño del suceso: ")))#;a=nums(OKI(a))
         m=mes(OKI(input("Mes del suceso: ")))#;m=mes(OKI(m))
@@ -144,7 +144,7 @@ while True:
         
     if op==("C"):
         num=OKI(input("Escriba el número de días: "))
-        pas_fut=input("¿Al pasado (\'p\') o al futuro (\'f\'): ")
+        pas_fut=input("¿Al pasado (\'p\') o al futuro (\'f\'): ").lower()
         while pas_fut!=("p") and pas_fut!=("f"):
             pas_fut=input("Esciba solo \'p\'o\'f\'según su opción: ")
         Dia1=date(1,1,1);HOY=int((today-Dia1).days)+1#SE ESTABLECE EL ORDINAL DE LA FECHA ACTUAL
@@ -177,7 +177,7 @@ while True:
             CAL=calendar.c.prmonth(int(date_spl[0]),int(date_spl[1]))
 
     print(Fore.RESET+"")
-    c=ns(input("\n¿Desea continuar?(n/s): "))
+    c=ns(input("\n¿Desea continuar?(n/s): ").lower())
     if c==("n"):
         break
     try:
