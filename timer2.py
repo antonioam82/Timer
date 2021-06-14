@@ -2,7 +2,7 @@ import time
 from datetime import date
 import subprocess
 from colorama import init, Back
-#from VALID import ER
+from VALID import ER
 
 init()
 
@@ -17,14 +17,6 @@ def OKI(n):
     except:
         n=OKI(input("Caracter no valido: "))
     return n
-
-
-def hms(timer):
-    h=(timer*24)
-    mi=(h*60)
-    sec=(mi*60)
-    TT=(h,mi,sec)
-    return TT
     
 
 def pregunta(timer): #ESTA FUNCION PREGUNTA SI SE QUIERE INCLUIR AMBAS FECHAS EN EL COMPUTO (VALE PARA "A","B" Y "C").
@@ -90,12 +82,11 @@ while True:
     print("B)Calcular número de días entre dos fechas distintas a la actual.")
     print("C)Conocer fecha a partir del número de días.")
     op=input("Introduzca aquí su opción: ")
+    
     while op!=("A") and op!=("B") and op!=("C"):
         op=input("Escriba solo \'A\',\'B\' o \'C\' segun su opción: ")
     today=date.today()
     cal=ns(input("¿Desea ver calendarios?: "))
-    if op==("A") or op==("B"):
-        segg=ns(input("¿Desea ver el tiempo en horas, minutos y segundos?: "))
     if op==("A"):
         a=nums(OKI(input("Año del suceso: ")))#;a=nums(OKI(a))
         m=mes(OKI(input("Mes del suceso: ")))#;m=mes(OKI(m))
@@ -116,9 +107,7 @@ while True:
             print("")
             CAL=calendar.c.prmonth(a,m)
             print("")
-        if segg==("s"):
-            tiempo_detall=(hms(timer))
-            print(tiempo_detall[0],ER(tiempo_detall[0]),"horas",tiempo_detall[1],ER(tiempo_detall[1]),"minutos y",tiempo_detall[2],ER(tiempo_detall[2]),"segundos")
+            
     if op==("B"):
         a=nums(OKI(input("Año del primer suceso: ")))#;a=nums(OKI(a))
         m=mes(OKI(input("Mes del primer suceso: ")))#;m=mes(OKI(m))
@@ -153,10 +142,6 @@ while True:
             CAL=calendar.c.prmonth(a,m)
             CAL2=calendar.c.prmonth(a2,m2)
             print("")
-            
-        if segg==("s"):
-            tiempo_detall=(hms(timer))
-            print(tiempo_detall[0],"horas",tiempo_detall[1],"minutos y",tiempo_detall[2],"segundos")
         
     if op==("C"):
         num=OKI(input("Escriba el número de días: "))
