@@ -2,6 +2,7 @@ import time
 from datetime import date
 import subprocess
 from colorama import init, Back, Fore, Style
+#from VALID import ER
 
 init()
 
@@ -69,16 +70,16 @@ def semana(n):
 
 
 while True:
-    print(Back.BLUE+"           _________________________________________               ")
-    print(Back.BLUE+"         /__    ___________________________________/               ")
-    print(Back.BLUE+"           /  / __   _________   ______   ________                 ")
-    print(Back.BLUE+"          /  / |  | |  _   _  | | =====| |  ----_/                 ")
-    print(Back.BLUE+"         /__/  |__| |_| |_| |_| |______| |_|  \_\                  ")
+    print(Back.BLUE+"            __________________________________________             ")
+    print(Back.BLUE+"           /__   ____________________________________/             ")
+    print(Back.BLUE+"             /  / __   _________   ______   ________               ")
+    print(Back.BLUE+"            /  / |  | |  _   _  | | =====| |  ----_/               ")
+    print(Back.BLUE+"           /__/  |__| |_| |_| |_| |______| |_|  \_\                ")
     print(Back.BLUE+"*******************************************************************")
     print(Back.RESET+"")
     print(Fore.GREEN+"-------------------------ESCOJA UNA OPCIÓN-------------------------")
     print("A)Calcular número de días tomando como referencia la fecha actual.")
-    print("B)Calcular número de días entre dos fechas distintas a la actual.")
+    print("B)Calcular número de días entre dos fechas distintas a la actual.")  
     print("C)Conocer fecha a partir del número de días.")
     print("-------------------------------------------------------------------"+Fore.RESET)
     op=input("Introduzca aquí su opción: ").upper()
