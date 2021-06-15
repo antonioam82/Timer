@@ -8,7 +8,7 @@ init()
 
 def ns(c):
     while c!=("s") and c!=("n"):
-        print(chr(7));c=input("Escribe solo \'n\' o \'s\' según su opción: ")
+        print(chr(7));c=input("Escribe solo \'n\' o \'s\' según su opción: ").lower()
     return(c)
 
 def OKI(n):
@@ -85,7 +85,7 @@ while True:
     op=input("Introduzca aquí su opción: ").upper()
     
     while op!=("A") and op!=("B") and op!=("C"):
-        op=input("Escriba solo \'A\',\'B\' o \'C\' segun su opción: ")
+        op=input("Escriba solo \'A\',\'B\' o \'C\' segun su opción: ").upper()
     today=date.today()
     cal=ns(input("¿Desea ver calendarios?: ").lower())
     if op==("A"):
@@ -146,7 +146,7 @@ while True:
         num=OKI(input("Escriba el número de días: "))
         pas_fut=input("¿Al pasado (\'p\') o al futuro (\'f\'): ").lower()
         while pas_fut!=("p") and pas_fut!=("f"):
-            pas_fut=input("Esciba solo \'p\'o\'f\'según su opción: ")
+            pas_fut=input("Esciba solo \'p\'o\'f\'según su opción: ").lower()
         Dia1=date(1,1,1);HOY=int((today-Dia1).days)+1#SE ESTABLECE EL ORDINAL DE LA FECHA ACTUAL
         Dia_ult=date(9999,12,31);fut_hoy=int((Dia_ult-today).days)#SE ESTABLECE LO QUE FALTA PARA EL ULTIMO DIA
         if pas_fut==("p"):
