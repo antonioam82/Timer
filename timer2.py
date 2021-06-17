@@ -87,7 +87,7 @@ while True:
     while op!=("A") and op!=("B") and op!=("C"):
         op=input("Escriba solo \'A\',\'B\' o \'C\' segun su opción: ").upper()
     today=date.today()
-    cal=ns(input("¿Desea ver calendarios?: ").lower())
+    cal=ns(input("¿Desea ver calendarios?(n/s): ").lower())
     if op==("A"):
         a=nums(OKI(input("\nAño del suceso: ")))#;a=nums(OKI(a))
         m=mes(OKI(input("Mes del suceso: ")))#;m=mes(OKI(m))
