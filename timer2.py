@@ -2,6 +2,7 @@ import time
 from datetime import date
 import subprocess
 from colorama import init, Back, Fore, Style
+#from VALID import ER
 
 init()
 
@@ -128,7 +129,7 @@ while True:
                 print(Fore.YELLOW+"\nTranscurrieron {} dias entre las dos fechas indicadas.".format(timer))
             else:
                 print(Fore.YELLOW+"\nTranscurriran {} dias entre las dos fechas indicadas.".format(timer))
-            print("({}semanas y {} dias).\n".format(str(int(timer/7)),timer%7))
+            print("({} semanas y {} dias).\n".format(str(int(timer/7)),timer%7))
         else:
             timer=(Dist1+Dist2)
             timer=pregunta(timer)
