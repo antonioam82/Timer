@@ -2,7 +2,7 @@ import time
 from datetime import date
 import subprocess
 from colorama import init, Back, Fore, Style
-#from VALID import ER
+import calendar
 
 init()
 
@@ -20,7 +20,7 @@ def OKI(n):
     
 
 def pregunta(timer): #ESTA FUNCION PREGUNTA SI SE QUIERE INCLUIR AMBAS FECHAS EN EL COMPUTO (VALE PARA "A","B" Y "C").
-    AD=ns(input("¿Incluir ambos dias en el computo?: ").lower())
+    AD=ns(input("¿Incluir ambos dias en el computo?(n/s): ").lower())
     if AD==("s"):
         timer=timer+1
     return(timer)   
@@ -78,9 +78,9 @@ while True:
     print(Back.BLUE+"*******************************************************************")
     print(Back.RESET+"")
     print(Fore.GREEN+"-------------------------ESCOJA UNA OPCIÓN-------------------------")
-    print("A)Calcular número de días tomando como referencia la fecha actual.")
-    print("B)Calcular número de días entre dos fechas distintas a la actual.")  
-    print("C)Conocer fecha a partir del número de días.")
+    print("A) Calcular número de días entre una fecha y la actual.")
+    print("B) Calcular número de días entre dos fechas.")  
+    print("C) Conocer fecha a partir del número de días.")
     print("-------------------------------------------------------------------"+Fore.RESET)
     op=input("Introduzca aquí su opción: ").upper()
     
@@ -104,7 +104,6 @@ while True:
             print(Fore.YELLOW+"\nHan transcurrido {} dias desde la fecha escogida.".format(timer))
         print("({} semanas y {} dias).".format(str(int(timer/7)),timer%7))
         if cal==("s"):
-            import calendar
             print(Fore.GREEN+"")
             CAL=calendar.c.prmonth(a,m)
             
@@ -137,7 +136,6 @@ while True:
             print("({} semanas y {} dias).\n".format(str(int(timer/7)),timer%7))
             
         if cal==("s"):
-            import calendar
             print(Fore.GREEN+"")
             CAL=calendar.c.prmonth(a,m)
             print("")
@@ -173,7 +171,6 @@ while True:
             dia_semana=semana(week_day)
             print(Fore.YELLOW+"\nDentro {} días será {} {} de {} de {}.".format(num,dia_semana,date_spl[2],mes_nom,date_spl[0]))
         if cal==("s"):
-            import calendar
             print(Fore.GREEN+"")
             CAL=calendar.c.prmonth(int(date_spl[0]),int(date_spl[1]))
 
