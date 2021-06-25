@@ -53,8 +53,8 @@ def mess(a,m,d):#PARA APLICAR LA FUNCION ESTAS VARIABLES HAN DE SER ENTEROS!!!
     return d
 
 def meses(Fm):
-    A=("","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
-    n=-1
+    A=("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
+    n=0
     for i in A:
         n+=1
         if int(Fm[1])==n:
