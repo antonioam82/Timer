@@ -169,7 +169,7 @@ while True:
             mes_nom=meses(date_spl)
             week_day=(dateo).weekday()
             dia_semana=semana(week_day)
-            print(Fore.YELLOW+"\nDentro {} días será {} {} de {} de {}.".format(num,dia_semana,date_spl[2],mes_nom,date_spl[0]))
+            print(Fore.YELLOW+"\nDentro de {} días será {} {} de {} de {}.".format(num,dia_semana,date_spl[2],mes_nom,date_spl[0]))
         if cal==("s"):
             print(Fore.GREEN+"")
             CAL=calendar.c.prmonth(int(date_spl[0]),int(date_spl[1]))
